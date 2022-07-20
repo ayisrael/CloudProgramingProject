@@ -1,0 +1,66 @@
+﻿@model project.Models.Flavors
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+    if (StaticFields.IsUser)
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    else
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/css/Home.css" />
+</head>
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <div class="row">
+                <h2>
+                    <span>
+                        Details
+                    </span>
+                </h2>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div style="font-size:20px">
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image_URL)
+        </dt>
+        <dd class = "col-sm-10">
+            <Img src="@Html.DisplayFor(model => model.Image_URL)" height="150" width="150"/>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+</div>
+@{ 
+    if (StaticFields.IsUser)
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+ }
